@@ -19,7 +19,7 @@
     <div class="name-lvl-class-card"></div>
     <div class="chInfo" th:if="${charactermodel}">
       <p class="name-text" th:text="${charactermodel.name}"></p>
-      <p class="level-text" th:text="${charactermodel.level}"></p>
+      <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
       <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
     </div>
     <div class="stats-text">Stats</div>
