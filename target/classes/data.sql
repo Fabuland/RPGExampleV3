@@ -1,0 +1,12 @@
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Fabu', 1, 'Mage');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('John', 30, 'Warrior');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Jane Smith', 25, 'Mage');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Mike Johnson', 20, 'Rogue');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Emily Brown', 35, 'Paladin');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('William Lee', 15, 'Hunter');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Olivia White', 40, 'Priest');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('James Taylor', 28, 'Druid');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Sophia Allen', 18, 'Warlock');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Benjamin Green', 50, 'Monk');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Ava Davis', 22, 'Shaman');
+INSERT INTO charactermodel (name, level, characterclass) VALUES ('Mason Turner', 38, 'Death Knight');

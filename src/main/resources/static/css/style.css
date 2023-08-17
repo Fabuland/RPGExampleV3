@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  line-height: normal;
+  background-image: url('fieldswallpaper.jpg');
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+  /* font sizes */
+  --font-size-11xl: 30px;
+  /* Colors */
+  --color-black: #000;
+  --color-darkgray: #b3b3b3;
+}
+
+.card {
+  position: absolute;
+  width: 720px;
+  height: 955px;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.global-card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #d9d9d9;
+}
+
+.name-lvl-class-card,
+.profile-pic-card {
+  position: absolute;
+  top: 30px;
+  background-color: var(--color-darkgray);
+  width: 315px;
+  height: 315px;
+}
+
+.profile-pic-card {
+  left: 30px;
+}
+
+.name-lvl-class-card {
+  left: 376px;
+}
+
+.name-text {
+  position: absolute;
+  top: 70px;
+  left: 410px;
+}
+
+.level-text {
+  position: absolute;
+  top: 70px;
+  left: 560px;
+}
+
+.chclass-text {
+  position: absolute;
+  top: 180px;
+  left: 410px;
+}
+
+.profile-icon {
+  position: absolute;
+  top: 62px;
+  left: 62px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.progressbar-icon {
+  position: absolute;
+  top: 80px;
+  left: 550px;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.stats-text {
+  position: absolute;
+  top: 370px;
+  left: 30px;
+}
+
+.equipment-text {
+  position: absolute;
+  top: 370px;
+  left: 376px;
+}
+
+.stats-card {
+  position: absolute;
+  top: 404px;
+  left: 30px;
+  background-color: var(--color-darkgray);
+  width: 315px;
+  height: 354px;
+}
+
+.equipment-card {
+  position: absolute;
+  top: 404px;
+  left: 376px;
+  background-color: var(--color-darkgray);
+  width: 315px;
+  height: 354px;
+}
+
+.combat-card,
+.home-card,
+.settings-card,
+.skill-card {
+  position: absolute;
+  top: 788px;
+  width: 142px;
+  height: 142px;
+  background-color: var(--color-darkgray);
+}
+
+.home-card {
+  left: 30px;
+}
+
+.combat-card {
+  left: 203px;
+}
+
+.skill-card {
+  left: 376px;
+}
+
+.settings-card {
+  left: 549px;
+}
+
+.combat-icon,
+.settings-icon,
+.home-icon,
+.skill-icon {
+  position: absolute;
+  top: 809px;
+  pointer-events: none;
+}
+
+.home-icon {
+  left: 51px;
+}
+
+.combat-icon {
+  left: 224px;
+}
+
+.skill-icon {
+  left: 397px;
+}
+
+.settings-icon {
+  left: 570px;
+}
