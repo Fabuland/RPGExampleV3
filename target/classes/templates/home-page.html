@@ -13,31 +13,42 @@
 </head>
 
 <body>
-  <div class="card">
-    <div class="global-card"></div>
-    <div class="profile-pic-card"></div>
-    <div class="name-lvl-class-card"></div>
-    <div class="chInfo" th:if="${charactermodel}">
-      <p class="name-text" th:text="${charactermodel.name}"></p>
-      <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
-      <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
-    </div>
-    <div class="stats-text">Stats</div>
-    <div class="equipment-text">Equipment</div>
-    <div class="stats-card"></div>
-    <div class="equipment-card"></div>
-    <button href="#" class="home-card"></button>
-    <button class="combat-card"></button>
-    <button class="skill-card"></button>
-    <button class="settings-card"></button>
-    <iconify-icon class="profile-icon" icon="iconamoon:profile-fill" width="250" height="250"></iconify-icon>
-    <iconify-icon class="progressbar-icon" icon="carbon:progress-bar" width="120" height="120"></iconify-icon>
-    <iconify-icon class="home-icon" icon="ic:round-home" width="100" height="100"></iconify-icon>
-    <iconify-icon class="combat-icon" icon="material-symbols:swords" width="100" height="100"></iconify-icon>
-    <iconify-icon class="skill-icon" icon="mdi:axe" width="100" height="100"></iconify-icon>
-    <iconify-icon class="settings-icon" icon="mdi:cog" width="100" height="100"></iconify-icon>
+<div class="card">
+  <div class="global-card"></div>
+  <div class="profile-pic-card"></div>
+  <div class="name-lvl-class-card"></div>
+  <div class="chInfo" th:if="${charactermodel}">
+    <p class="name-text" th:text="${charactermodel.name}"></p>
+    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
+    <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
+    <p class="totalexp-text">1200</p>
   </div>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <div class="chHelpingText">
+    <hr class="name-hr" />
+    <hr class="level-hr" />
+    <hr class="chclass-hr" />
+    <hr class="totalexp-hr" />
+    <p class="name-text-help">Name</p>
+    <p class="level-text-help">Level</p>
+    <p class="chclass-text-help">Class</p>
+    <p class="totalexp-text-help">Total Exp</p>
+  </div>
+  <div class="stats-text">Stats</div>
+  <div class="equipment-text">Equipment</div>
+  <div class="stats-card"></div>
+  <div class="equipment-card"></div>
+  <button href="#" class="home-card"></button>
+  <button class="combat-card"></button>
+  <button class="skill-card"></button>
+  <button class="settings-card"></button>
+  <iconify-icon class="profile-icon" icon="iconamoon:profile-fill" width="250" height="250"></iconify-icon>
+  <iconify-icon class="progressbar-icon" icon="carbon:progress-bar" width="120" height="120"></iconify-icon>
+  <iconify-icon class="home-icon" icon="ic:round-home" width="100" height="100"></iconify-icon>
+  <iconify-icon class="combat-icon" icon="material-symbols:swords" width="100" height="100"></iconify-icon>
+  <iconify-icon class="skill-icon" icon="mdi:axe" width="100" height="100"></iconify-icon>
+  <iconify-icon class="settings-icon" icon="mdi:cog" width="100" height="100"></iconify-icon>
+</div>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 
 </html>

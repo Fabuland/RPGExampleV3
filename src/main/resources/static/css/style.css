@@ -2,9 +2,6 @@ body {
   margin: 0;
   line-height: normal;
   background-image: url('fieldswallpaper.jpg');
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 22px;
 }
 
 :root {
@@ -57,22 +54,97 @@ body {
   left: 376px;
 }
 
+.chInfo {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+}
+
 .name-text {
   position: absolute;
   top: 70px;
-  left: 410px;
+  left: 400px;
 }
 
 .level-text {
   position: absolute;
   top: 70px;
-  left: 560px;
+  left: 550px;
 }
 
 .chclass-text {
   position: absolute;
   top: 180px;
-  left: 410px;
+  left: 400px;
+}
+
+.totalexp-text {
+  position: absolute;
+  top: 180px;
+  left: 550px;
+}
+
+.name-hr {
+  position: absolute;
+  top: 120px;
+  left: 395px;
+  width: 120px;
+  border-top: 1px solid black;
+}
+
+.level-hr {
+  position: absolute;
+  top: 120px;
+  left: 545px;
+  width: 120px;
+  border-top: 1px solid black;
+}
+
+.chclass-hr {
+  position: absolute;
+  top: 230px;
+  left: 395px;
+  width: 120px;
+  border-top: 1px solid black;
+}
+
+.totalexp-hr {
+  position: absolute;
+  top: 230px;
+  left: 545px;
+  width: 120px;
+  border-top: 1px solid black;
+}
+
+.chHelpingText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: gray;
+}
+
+.name-text-help {
+  position: absolute;
+  top: 120px;
+  left: 400px;
+}
+
+.level-text-help {
+  position: absolute;
+  top: 120px;
+  left: 550px;
+}
+
+.chclass-text-help {
+  position: absolute;
+  top: 230px;
+  left: 400px;
+}
+
+.totalexp-text-help {
+  position: absolute;
+  top: 230px;
+  left: 550px;
 }
 
 .profile-icon {
@@ -86,8 +158,8 @@ body {
 
 .progressbar-icon {
   position: absolute;
-  top: 80px;
-  left: 550px;
+  top: 240px;
+  left: 540px;
   width: 120px;
   height: 120px;
   overflow: hidden;
@@ -95,14 +167,20 @@ body {
 
 .stats-text {
   position: absolute;
-  top: 370px;
+  top: 365px;
   left: 30px;
 }
 
 .equipment-text {
   position: absolute;
-  top: 370px;
+  top: 365px;
   left: 376px;
+}
+
+.stats-text, .equipment-text {
+  font-family: Garamond, serif;
+  font-weight: 600;
+  font-size: 28px;
 }
 
 .stats-card {
