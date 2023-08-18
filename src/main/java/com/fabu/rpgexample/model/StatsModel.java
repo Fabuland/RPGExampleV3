@@ -19,6 +19,11 @@ public class StatsModel {
     @Column(nullable = false, name = "totalexp")
     private Integer totalExp;
 
+    @Column(nullable = false, name = "health")
+    @NotNull(message = "The health can't be null")
+    @Min(value = 1, message = "The health can't be less than 1")
+    private Integer health;
+
     @Column(nullable = false, name = "atkpower")
     @NotNull(message = "The level can't be null")
     @Min(value = 1, message = "The atk power can't be less than 1")
@@ -32,9 +37,10 @@ public class StatsModel {
     public StatsModel() {
     }
 
-    public StatsModel(Integer level, Integer totalExp, Integer atkPower, Integer critChance) {
+    public StatsModel(Integer level, Integer totalExp, Integer health, Integer atkPower, Integer critChance) {
         this.level = level;
         this.totalExp = totalExp;
+        this.health = health;
         this.atkPower = atkPower;
         this.critChance = critChance;
     }
@@ -49,6 +55,10 @@ public class StatsModel {
 
     public Integer getTotalExp() {
         return totalExp;
+    }
+
+    public Integer getHealth() {
+        return health;
     }
 
     public Integer getAtkPower() {
@@ -71,6 +81,10 @@ public class StatsModel {
         this.totalExp = totalExp;
     }
 
+    public void setHealth(Integer health) {
+        this.health = health;
+    }
+
     public void setAtkPower(Integer atkPower) {
         this.atkPower = atkPower;
     }
@@ -83,6 +97,7 @@ public class StatsModel {
     public String toString() {
         return "StatsModel{" +
                 "level=" + level +
+                ", health=" + health +
                 ", atkPower=" + atkPower +
                 ", critChance=" + critChance +
                 '}';

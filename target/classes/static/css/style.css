@@ -58,6 +58,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 26px;
+  color: white;
+  text-shadow: 0 0 8px #000;
 }
 
 .name-text {
@@ -181,6 +183,58 @@ body {
   font-family: Garamond, serif;
   font-weight: 600;
   font-size: 28px;
+}
+
+.statsHelpingText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: turquoise;
+  text-shadow: 0 0 3px #000;
+}
+
+.health-text-help {
+  position: absolute;
+  top: 410px;
+  left: 60px;
+}
+
+.atkpower-text-help {
+  position: absolute;
+  top: 460px;
+  left: 60px;
+}
+
+.critchance-text-help {
+  position: absolute;
+  top: 510px;
+  left: 60px;
+}
+
+.statsText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+  text-shadow: 0 0 5px #000;
+}
+
+.health-text {
+  position: absolute;
+  top: 410px;
+  left: 270px;
+}
+
+.atkpower-text {
+  position: absolute;
+  top: 460px;
+  left: 270px;
+}
+
+.critchance-text {
+  position: absolute;
+  top: 510px;
+  left: 270px;
 }
 
 .stats-card {

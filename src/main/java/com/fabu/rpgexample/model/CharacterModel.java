@@ -14,13 +14,8 @@ public class CharacterModel {
 
     @Column(nullable = false, name = "name")
     @NotEmpty(message = "The name can't be null")
-    @Size(min = 5, message = "The name needs more than 4 characters")
+    @Size(min = 5, max = 9, message = "The name needs more than 4 characters")
     private String name;
-
-    @Column(nullable = false, name = "level")
-    @NotNull(message = "The level can't be null")
-    @Min(value = 1, message = "The level can't be less than 1")
-    private Integer level;
 
     @Column(nullable = false, name = "characterclass")
     @NotEmpty(message = "The class can't be null")
@@ -31,9 +26,8 @@ public class CharacterModel {
     public CharacterModel() {
     }
 
-    public CharacterModel(String name, Integer level, String characterClass) {
+    public CharacterModel(String name, String characterClass) {
         this.name = name;
-        this.level = level;
         this.characterClass = characterClass;
     }
 
@@ -54,14 +48,6 @@ public class CharacterModel {
         this.name = name;
     }
 
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
     public String getCharacterClass() {
         return characterClass;
     }
@@ -75,7 +61,6 @@ public class CharacterModel {
     public String toString() {
         return "Character{" +
                 "name='" + name + '\'' +
-                ", level=" + level +
                 ", characterClass='" + characterClass + '\'' +
                 '}';
     }
