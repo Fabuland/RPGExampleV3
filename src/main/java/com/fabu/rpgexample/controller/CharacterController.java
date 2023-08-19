@@ -3,11 +3,10 @@ package com.fabu.rpgexample.controller;
 import com.fabu.rpgexample.model.StatsModel;
 import com.fabu.rpgexample.repository.CharacterRepository;
 import com.fabu.rpgexample.repository.StatsRepository;
-import jakarta.validation.Valid;
+import com.fabu.rpgexample.service.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.fabu.rpgexample.model.CharacterModel;
 
@@ -18,11 +17,13 @@ public class CharacterController {
 
     private final CharacterRepository characterRepository;
     private final StatsRepository statsRepository;
+    private final CharacterService characterService;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository, StatsRepository statsRepository) {
+    public CharacterController(CharacterRepository characterRepository, StatsRepository statsRepository, CharacterService characterService) {
         this.characterRepository = characterRepository;
         this.statsRepository = statsRepository;
+        this.characterService = characterService;
     }
 
     @GetMapping(value={"/{id}", "/"})
@@ -38,8 +39,17 @@ public class CharacterController {
         statsOptional.ifPresent(statsmodel -> {
             model.addAttribute("statsmodel", statsmodel);
         });
-        System.out.println("Inside index method");
+        System.out.println("Inside home page method");
         return "home-page";
+    }
+
+    @GetMapping(value={"/combat/{id}", "/combat/"})
+    public String getCombatPage(@PathVariable(value = "id", required = false) Long id, Model model){
+        if(id == null){
+            id = 1L;
+        }
+
+        return "combat-page";
     }
 
 }
