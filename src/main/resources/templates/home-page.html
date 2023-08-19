@@ -21,7 +21,7 @@
     <p class="name-text" th:text="${charactermodel.name}"></p>
     <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
     <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
-    <p class="totalexp-text">1200</p>
+    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}"></p>
   </div>
   <div class="chHelpingText">
     <hr class="name-hr" />
@@ -52,7 +52,7 @@
   <button class="skill-card"></button>
   <button class="settings-card"></button>
   <iconify-icon class="profile-icon" icon="iconamoon:profile-fill" width="250" height="250"></iconify-icon>
-  <iconify-icon class="progressbar-icon" icon="carbon:progress-bar" width="120" height="120"></iconify-icon>
+  <!--<iconify-icon class="progressbar-icon" icon="carbon:progress-bar" width="120" height="120"></iconify-icon>-->
   <iconify-icon class="home-icon" icon="ic:round-home" width="100" height="100"></iconify-icon>
   <iconify-icon class="combat-icon" icon="material-symbols:swords" width="100" height="100"></iconify-icon>
   <iconify-icon class="skill-icon" icon="mdi:axe" width="100" height="100"></iconify-icon>

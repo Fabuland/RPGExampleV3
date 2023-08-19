@@ -24,6 +24,8 @@ public class StatsModel {
     @Min(value = 1, message = "The health can't be less than 1")
     private Integer health;
 
+    /*TODO Current HP*/
+
     @Column(nullable = false, name = "atkpower")
     @NotNull(message = "The level can't be null")
     @Min(value = 1, message = "The atk power can't be less than 1")
@@ -31,7 +33,6 @@ public class StatsModel {
 
     @Column(nullable = false, name = "critchance")
     @NotNull(message = "The level can't be null")
-    @Min(value = 1, message = "The crit chance can't be less than 1")
     private Integer critChance;
 
     public StatsModel() {
