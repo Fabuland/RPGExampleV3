@@ -1,12 +1,12 @@
 body {
   margin: 0;
+  padding: 0;
   line-height: normal;
   background-image: url('fieldswallpaper.jpg');
+  font-family: alagard;
 }
 
 :root {
-  /* fonts */
-  --font-roboto: Roboto;
   /* font sizes */
   --font-size-11xl: 30px;
   /* Colors */
@@ -17,7 +17,7 @@ body {
 .card {
   position: absolute;
   width: 720px;
-  height: 955px;
+  height: 953px;
   display: block;
   top: 0;
   left: 0;
@@ -26,22 +26,16 @@ body {
   margin: auto;
 }
 
-.global-card {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #d9d9d9;
+@font-face {
+  font-family: alagard;
+  src: url(alagard.ttf);
 }
 
-.name-lvl-class-card,
-.profile-pic-card {
+.profile-pic-card,
+.chInfo,
+.chHelpingText {
   position: absolute;
   top: 30px;
-  background-color: var(--color-darkgray);
   width: 315px;
   height: 315px;
 }
@@ -50,12 +44,22 @@ body {
   left: 30px;
 }
 
-.name-lvl-class-card {
-  left: 376px;
+.chInfo,
+.chHelpingText {
+  left: 375px;
+}
+
+.user-icon {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: 2;
 }
 
 .chInfo {
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 26px;
   color: white;
@@ -64,184 +68,107 @@ body {
 
 .name-text {
   position: absolute;
-  top: 70px;
-  left: 400px;
+  top: 40px;
+  left: 25px;
+  z-index: 2;
 }
 
 .level-text {
   position: absolute;
-  top: 70px;
-  left: 550px;
+  top: 40px;
+  left: 175px;
+  z-index: 2;
 }
 
 .chclass-text {
   position: absolute;
-  top: 180px;
-  left: 400px;
+  top: 150px;
+  left: 25px;
+  z-index: 2;
 }
 
 .totalexp-text {
   position: absolute;
-  top: 180px;
-  left: 550px;
+  top: 150px;
+  left: 175px;
+  z-index: 2;
+}
+
+.chHelpingText {
+  font-weight: 300;
+  font-size: 14px;
+  color: white;
+  text-shadow: 0 0 4px #000;
 }
 
 .name-hr {
   position: absolute;
-  top: 120px;
-  left: 395px;
+  top: 90px;
+  left: 20px;
   width: 120px;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
+  z-index: 2;
 }
 
 .level-hr {
   position: absolute;
-  top: 120px;
-  left: 545px;
+  top: 90px;
+  left: 170px;
   width: 120px;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
+  z-index: 2;
 }
 
 .chclass-hr {
   position: absolute;
-  top: 230px;
-  left: 395px;
+  top: 200px;
+  left: 20px;
   width: 120px;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
+  z-index: 2;
 }
 
 .totalexp-hr {
   position: absolute;
-  top: 230px;
-  left: 545px;
+  top: 200px;
+  left: 170px;
   width: 120px;
-  border-top: 1px solid black;
-}
-
-.chHelpingText {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  color: gray;
+  border-top: 1px solid white;
+  z-index: 2;
 }
 
 .name-text-help {
   position: absolute;
-  top: 120px;
-  left: 400px;
+  top: 90px;
+  left: 25px;
+  z-index: 2;
 }
 
 .level-text-help {
   position: absolute;
-  top: 120px;
-  left: 550px;
+  top: 90px;
+  left: 175px;
+  z-index: 2;
 }
 
 .chclass-text-help {
   position: absolute;
-  top: 230px;
-  left: 400px;
+  top: 200px;
+  left: 25px;
+  z-index: 2;
 }
 
 .totalexp-text-help {
   position: absolute;
-  top: 230px;
-  left: 550px;
-}
-
-.profile-icon {
-  position: absolute;
-  top: 62px;
-  left: 62px;
-  width: 250px;
-  height: 250px;
-  overflow: hidden;
-}
-
-.progressbar-icon {
-  position: absolute;
-  top: 240px;
-  left: 540px;
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-}
-
-.stats-text {
-  position: absolute;
-  top: 365px;
-  left: 30px;
-}
-
-.equipment-text {
-  position: absolute;
-  top: 365px;
-  left: 376px;
-}
-
-.stats-text, .equipment-text {
-  font-family: Garamond, serif;
-  font-weight: 600;
-  font-size: 28px;
-}
-
-.statsHelpingText {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  color: turquoise;
-  text-shadow: 0 0 3px #000;
-}
-
-.health-text-help {
-  position: absolute;
-  top: 410px;
-  left: 60px;
-}
-
-.atkpower-text-help {
-  position: absolute;
-  top: 460px;
-  left: 60px;
-}
-
-.critchance-text-help {
-  position: absolute;
-  top: 510px;
-  left: 60px;
-}
-
-.statsText {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  color: white;
-  text-shadow: 0 0 5px #000;
-}
-
-.health-text {
-  position: absolute;
-  top: 410px;
-  left: 270px;
-}
-
-.atkpower-text {
-  position: absolute;
-  top: 460px;
-  left: 270px;
-}
-
-.critchance-text {
-  position: absolute;
-  top: 510px;
-  left: 270px;
+  top: 200px;
+  left: 175px;
+  z-index: 2;
 }
 
 .stats-card {
   position: absolute;
   top: 404px;
   left: 30px;
-  background-color: var(--color-darkgray);
   width: 315px;
   height: 354px;
 }
@@ -250,59 +177,278 @@ body {
   position: absolute;
   top: 404px;
   left: 376px;
-  background-color: var(--color-darkgray);
   width: 315px;
   height: 354px;
 }
 
-.combat-card,
-.home-card,
-.settings-card,
-.skill-card {
+.stats-text {
   position: absolute;
-  top: 788px;
-  width: 142px;
-  height: 142px;
-  background-color: var(--color-darkgray);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: -45px;
+  z-index: 2;
 }
 
-.home-card {
+.equipment-text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: -45px;
+  z-index: 2;
+}
+
+.stats-text, .equipment-text {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.statsHelpingText {
+  font-weight: 500;
+  font-size: 24px;
+  color: MediumAquamarine;
+  text-shadow: 0 0 3px #000;
+}
+
+.health-text-help {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  z-index: 2;
+}
+
+.atkpower-text-help {
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  z-index: 2;
+}
+
+.critchance-text-help {
+  position: absolute;
+  top: 130px;
+  left: 60px;
+  z-index: 2;
+}
+
+.statsText {
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+  text-shadow: 0 0 5px #000;
+}
+
+.health-text {
+  position: absolute;
+  top: 30px;
+  left: 220px;
+  z-index: 2;
+}
+
+.atkpower-text {
+  position: absolute;
+  top: 80px;
+  left: 220px;
+  z-index: 2;
+}
+
+.critchance-text {
+  position: absolute;
+  top: 130px;
+  left: 220px;
+  z-index: 2;
+}
+
+.stats-border {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+
+.equipment-border {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+
+.combat-button,
+.home-button,
+.settings-button,
+.skill-button {
+  position: absolute;
+  top: 788px;
+  width: 160px;
+  height: 160px;
+}
+
+.home-button {
   left: 30px;
 }
 
-.combat-card {
+.combat-button {
   left: 203px;
 }
 
-.skill-card {
+.skill-button {
   left: 376px;
 }
 
-.settings-card {
+.settings-button {
   left: 549px;
 }
 
-.combat-icon,
-.settings-icon,
-.home-icon,
-.skill-icon {
+/*Start of combat page*/
+/*Start of user/enemy UI*/
+.user-card,
+.enemy-card {
   position: absolute;
-  top: 809px;
-  pointer-events: none;
+  top: 30px;
+  width: 315px;
+  height: 315px;
+  z-index: 1;
 }
 
-.home-icon {
-  left: 51px;
+.user-card {
+  left: 30px;
 }
 
-.combat-icon {
-  left: 224px;
+.enemy-card {
+  left: 376px;
 }
 
-.skill-icon {
-  left: 397px;
+.patch-border {
+  position: absolute;
+  margin: auto;
+  top: 0;
 }
 
-.settings-icon {
-  left: 570px;
+.combat-stats {
+  position: relative;
+  width: 100%;
+  display: flex;
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+  margin-top: -10px;
+}
+
+.user-name-combat,
+.user-level-combat,
+.enemy-name-combat,
+.enemy-level-combat {
+  width: 20%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.user-name-combat {
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.hp-div {
+  position: relative;
+  width: 60%;
+  text-align: center;
+}
+
+.hp-bar {
+  width: 90%;
+}
+
+.user-health-combat {
+  font-size: 16px;
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  width: 100%;
+}
+
+.enemy-health-combat {
+  font-size: 16px;
+  position: absolute;
+  top: 6px;
+  left: -15px;
+  width: 100%;
+}
+
+.user-icon {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.enemy-icon {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/*383px actions + log*/
+/*Start of actions buttons*/
+.actions-layout {
+  position: absolute;
+  top: 375px;
+  left: 30px;
+  width: 660px;
+  height: 177px;
+}
+
+.actions-border {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+
+.attack-action {
+  position: absolute;
+  top: 38px;
+  left: 108px;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+.defend-action {
+  position: absolute;
+  top: 38px;
+  left: 280px;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+.heal-action {
+  position: absolute;
+  top: 38px;
+  left: 453px;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+/*Start of log*/
+.log-card {
+  position: absolute;
+  top: 582px;
+  left: 30px;
+  width: 660px;
+  height: 176px;
+}
+
+.log-border {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
 }

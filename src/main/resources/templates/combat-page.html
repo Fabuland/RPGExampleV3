@@ -5,20 +5,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
   <title>RPGExample</title>
-  <link rel="stylesheet" href="../css/combatstyle.css" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@500&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 <div class="card">
   <div class="global-card"></div>
   <div class="user-card">
+    <div class="combat-stats">
+      <p class="user-name-combat">Fabu the mage</p>
+      <p class="user-level-combat">Lv. 10</p>
+      <div class="hp-div">
+        <img class="hp-bar" src="../css/userhpbar.png" />
+        <p class="user-health-combat">43/50</p>
+      </div>
+    </div>
+    <img class="patch-border" src="../css/userpatch.png" />
     <img class="user-icon" src="../css/mage.png" />
+
   </div>
   <div class="enemy-card">
+    <div class="combat-stats">
+      <div class="hp-div">
+        <img class="hp-bar" src="../css/enemyhpbar.png" />
+        <p class="enemy-health-combat">24/39</p>
+      </div>
+      <p class="enemy-level-combat">Lv.7</p>
+      <p class="enemy-name-combat">Wild Skeleton</p>
+    </div>
+    <img class="patch-border" src="../css/enemypatch.png" />
     <img class="enemy-icon" src="../css/skeleton.png" />
   </div>
   <div class="actions-layout">
@@ -36,16 +53,19 @@
   <div class="log-card">
     <img class="log-border" src="../css/logborder.png" />
   </div>
-    <button onclick="window.location.href='http://localhost:8080/'" class="home-card"></button>
-    <button onclick="window.location.href='http://localhost:8080/combat/'" class="combat-card"></button>
-    <button onclick="window.location.href='http://localhost:8080/skill/'" class="skill-card"></button>
-    <button onclick="window.location.href='http://localhost:8080/settings/'" class="settings-card"></button>
-    <iconify-icon class="home-icon" icon="ic:round-home" width="100" height="100"></iconify-icon>
-    <iconify-icon class="combat-icon" icon="material-symbols:swords" width="100" height="100"></iconify-icon>
-    <iconify-icon class="skill-icon" icon="mdi:axe" width="100" height="100"></iconify-icon>
-    <iconify-icon class="settings-icon" icon="mdi:cog" width="100" height="100"></iconify-icon>
-  </div>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <a href="http://localhost:8080" class="home-button">
+    <img src="../css/homebutton.png" />
+  </a>
+  <a href="http://localhost/combat/" class="combat-button">
+    <img src="../css/combatbutton.png" />
+  </a>
+  <a href="http://localhost/skill/" class="skill-button">
+    <img src="../css/skillbutton.png" />
+  </a>
+  <a href="http://localhost/settings/" class="settings-button">
+    <img src="../css/settingsbutton.png" />
+  </a>
+</div>
 </body>
 
 </html>

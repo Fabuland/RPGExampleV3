@@ -8,20 +8,24 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 <div class="card">
-  <div class="global-card"></div>
-  <div class="profile-pic-card"></div>
-  <div class="name-lvl-class-card"></div>
+  <div class="profile-pic-card">
+    <img class="ch-border" src="../css/chcard.png" />
+    <img class="user-icon" src="../css/mage.png" />
+  </div>
+  <div class="name-lvl-class-card">
+
+  </div>
   <div class="chInfo" th:if="${charactermodel}">
-    <p class="name-text" th:text="${charactermodel.name}"></p>
-    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
-    <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
-    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}"></p>
+    <img class="wooden-border" src="../css/woodenborder.png" />
+    <p class="name-text" th:text="${charactermodel.name}">Fabu</p>
+    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}">Lv. 10</p>
+    <p class="chclass-text" th:text="${charactermodel.characterClass}">Mage</p>
+    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}">1200</p>
   </div>
   <div class="chHelpingText">
     <hr class="name-hr" />
@@ -33,32 +37,37 @@
     <p class="chclass-text-help">Class</p>
     <p class="totalexp-text-help">Total Exp</p>
   </div>
-  <div class="stats-card"></div>
-  <div class="equipment-card"></div>
-  <div class="stats-text">Stats</div>
-  <div class="equipment-text">Equipment</div>
-  <div class="statsHelpingText">
-    <p class="health-text-help">HP</p>
-    <p class="atkpower-text-help">ATTACK</p>
-    <p class="critchance-text-help">CRIT</p>
+  <div class="stats-card">
+    <img class="stats-border" src="../css/statsborder.png" />
+    <p class="stats-text">Stats</p>
+    <div class="statsHelpingText">
+      <p class="health-text-help">HP</p>
+      <p class="atkpower-text-help">ATTACK</p>
+      <p class="critchance-text-help">CRIT</p>
+    </div>
+    <div class="statsText" th:if="${statsmodel}">
+      <p class="health-text" th:text="${statsmodel.health}"></p>
+      <p class="atkpower-text" th:text="${statsmodel.atkPower}"></p>
+      <p class="critchance-text" th:text="${statsmodel.critChance + '%'}"></p>
+    </div>
   </div>
-  <div class="statsText" th:if="${statsmodel}">
-    <p class="health-text" th:text="${statsmodel.health}"></p>
-    <p class="atkpower-text" th:text="${statsmodel.atkPower}"></p>
-    <p class="critchance-text" th:text="${statsmodel.critChance + '%'}"></p>
+  <div class="equipment-card">
+    <img class="equipment-border" src="../css/statsborder.png" />
+    <p class="equipment-text">Equipment</p>
   </div>
-  <button onclick="window.location.href='http://localhost:8080/'" class="home-card"></button>
-  <button onclick="window.location.href='http://localhost:8080/combat/'" class="combat-card"></button>
-  <button onclick="window.location.href='http://localhost:8080/skill/'" class="skill-card"></button>
-  <button onclick="window.location.href='http://localhost:8080/settings/'" class="settings-card"></button>
-  <iconify-icon class="profile-icon" icon="iconamoon:profile-fill" width="250" height="250"></iconify-icon>
-  <!--<iconify-icon class="progressbar-icon" icon="carbon:progress-bar" width="120" height="120"></iconify-icon>-->
-  <iconify-icon class="home-icon" icon="ic:round-home" width="100" height="100"></iconify-icon>
-  <iconify-icon class="combat-icon" icon="material-symbols:swords" width="100" height="100"></iconify-icon>
-  <iconify-icon class="skill-icon" icon="mdi:axe" width="100" height="100"></iconify-icon>
-  <iconify-icon class="settings-icon" icon="mdi:cog" width="100" height="100"></iconify-icon>
+  <a href="http://localhost:8080" class="home-button">
+    <img src="../css/homebutton.png" />
+  </a>
+  <a href="http://localhost:8080/combat/" class="combat-button">
+    <img src="../css/combatbutton.png" />
+  </a>
+  <a href="http://localhost:8080/skill/" class="skill-button">
+    <img src="../css/skillbutton.png" />
+  </a>
+  <a href="http://localhost:8080/settings/" class="settings-button">
+    <img src="../css/settingsbutton.png" />
+  </a>
 </div>
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 
 </html>
