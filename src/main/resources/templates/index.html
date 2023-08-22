@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <title>RPG</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+</head>
+
+<body>
+<div class="card">
+  <div class="profile-pic-card">
+    <img class="ch-border" src="../images/chcard.png" />
+    <img class="user-icon" src="../images/mage.png" />
+  </div>
+  <div class="name-lvl-class-card">
+
+  </div>
+  <div class="chInfo" th:if="${charactermodel}">
+    <img class="wooden-border" src="../images/woodenborder.png" />
+    <p class="name-text" th:text="${charactermodel.name}"></p>
+    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
+    <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
+    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}"></p>
+  </div>
+  <div class="chHelpingText">
+    <hr class="name-hr" />
+    <hr class="level-hr" />
+    <hr class="chclass-hr" />
+    <hr class="totalexp-hr" />
+    <p class="name-text-help">Name</p>
+    <p class="level-text-help">Level</p>
+    <p class="chclass-text-help">Class</p>
+    <p class="totalexp-text-help">Total Exp</p>
+  </div>
+  <div class="stats-card">
+    <img class="stats-border" src="../images/statsborder.png" />
+    <p class="stats-text">Stats</p>
+    <div class="statsHelpingText">
+      <p class="health-text-help">HP</p>
+      <p class="atkpower-text-help">ATTACK</p>
+      <p class="critchance-text-help">CRIT</p>
+    </div>
+    <div class="statsText" th:if="${statsmodel}">
+      <p class="health-text" th:text="${statsmodel.health}"></p>
+      <p class="atkpower-text" th:text="${statsmodel.atkPower}"></p>
+      <p class="critchance-text" th:text="${statsmodel.critChance + '%'}"></p>
+    </div>
+  </div>
+  <div class="equipment-card">
+    <img class="equipment-border" src="../images/statsborder.png" />
+    <p class="equipment-text">Equipment</p>
+  </div>
+  <a href="http://localhost:8080" class="home-button">
+    <img src="../images/homebutton.png" />
+  </a>
+  <a href="http://localhost:8080/combat/" class="combat-button">
+    <img src="../images/combatbutton.png" />
+  </a>
+  <a href="http://localhost:8080/skill/" class="skill-button">
+    <img src="../images/skillbutton.png" />
+  </a>
+  <a href="http://localhost:8080/settings/" class="settings-button">
+    <img src="../images/settingsbutton.png" />
+  </a>
+</div>
+<script src="../js/script.js"></script>
+</body>
+
+</html>

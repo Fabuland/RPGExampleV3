@@ -45,7 +45,7 @@ public class CharacterController {
             model.addAttribute("statsmodel", statsmodel);
         });
         System.out.println("Inside home page method");
-        return "home-page";
+        return "index";
     }
 
     @GetMapping(value={"/combat/{id}", "/combat/"})
