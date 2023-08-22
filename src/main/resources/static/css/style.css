@@ -280,6 +280,7 @@ body {
   top: 788px;
   width: 160px;
   height: 160px;
+  transition: transform 0.2s;
 }
 
 .home-button {
@@ -296,6 +297,21 @@ body {
 
 .settings-button {
   left: 549px;
+}
+
+.combat-button:hover,
+.home-button:hover,
+.settings-button:hover,
+.skill-button:hover {
+  transform: scale(1.03);
+}
+
+.combat-button:active,
+.home-button:active,
+.settings-button:active,
+.skill-button:active {
+  filter: grayscale(50%) blur(0.8px);
+  /* Example: Apply grayscale when clicked */
 }
 
 /*Start of combat page*/
@@ -410,30 +426,30 @@ body {
   z-index: 1;
 }
 
+.action-buttons {
+  display: flex;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
 .attack-action {
-  position: absolute;
-  top: 38px;
-  left: 108px;
-  width: 100px;
-  height: 100px;
+  width: calc(100%/3);
+  height: 128px;
   z-index: 2;
 }
 
 .defend-action {
-  position: absolute;
-  top: 38px;
-  left: 280px;
-  width: 100px;
-  height: 100px;
+  width: calc(100%/3);
+  height: 128px;
   z-index: 2;
 }
 
 .heal-action {
-  position: absolute;
-  top: 38px;
-  left: 453px;
-  width: 100px;
-  height: 100px;
+  width: calc(100%/3);
+  height: 128px;
   z-index: 2;
 }
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <title>RPGExample</title>
+  <title>RPG</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="icon" type="image/x-icon" href="../css/favicon.ico">
 </head>
@@ -20,10 +20,10 @@
   </div>
   <div class="chInfo" th:if="${charactermodel}">
     <img class="wooden-border" src="../css/woodenborder.png" />
-    <p class="name-text" th:text="${charactermodel.name}">Fabu</p>
-    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}">Lv. 10</p>
-    <p class="chclass-text" th:text="${charactermodel.characterClass}">Mage</p>
-    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}">1200</p>
+    <p class="name-text" th:text="${charactermodel.name}"></p>
+    <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
+    <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
+    <p class="totalexp-text" th:if="${statsmodel}" th:text="${statsmodel.totalExp}"></p>
   </div>
   <div class="chHelpingText">
     <hr class="name-hr" />

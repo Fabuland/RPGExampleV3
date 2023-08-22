@@ -28,7 +28,8 @@ public class CharacterController {
 
     @GetMapping(value={"/{id}", "/"})
     public String getAllCharacters(@PathVariable(value = "id", required = false) Long id, Model model) {
-        if(id == null){
+        Long maxId = characterRepository.findMaxId();
+        if(id == null || id > maxId){
             id = 1L;
         }
         Optional<CharacterModel> characterOptional = characterRepository.findById(id);

@@ -18,3 +18,7 @@ INSERT INTO statsmodel (level, totalexp, health, atkpower, critchance) VALUES (1
 INSERT INTO statsmodel (level, totalexp, health, atkpower, critchance) VALUES (1, 0, 10, 1, 0);
 INSERT INTO statsmodel (level, totalexp, health, atkpower, critchance) VALUES (1, 0, 10, 1, 0);
 INSERT INTO statsmodel (level, totalexp, health, atkpower, critchance) VALUES (1, 0, 10, 1, 0);
+INSERT INTO enemiesmodel (name, level, expgiven, health, currenthealth, atkpower) VALUES ('Rat', 1, 5, 10, 10, 1);
+INSERT INTO enemiesmodel (name, level, expgiven, health, currenthealth, atkpower) VALUES ('Rat', 2, 10, 12, 12, 1);
+INSERT INTO enemiesmodel (name, level, expgiven, health, currenthealth, atkpower) VALUES ('Rat', 3, 15, 15, 15, 2);
+INSERT INTO enemiesmodel (name, level, expgiven, health, currenthealth, atkpower) VALUES ('Rat', 4, 20, 18, 18, 2);

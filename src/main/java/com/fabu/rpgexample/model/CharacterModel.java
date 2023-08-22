@@ -14,12 +14,12 @@ public class CharacterModel {
 
     @Column(nullable = false, name = "name")
     @NotEmpty(message = "The name can't be null")
-    @Size(min = 5, max = 9, message = "The name needs more than 4 characters")
+    @Size(min = 3, max = 15, message = "The name needs more than 2 characters")
     private String name;
 
     @Column(nullable = false, name = "characterclass")
     @NotEmpty(message = "The class can't be null")
-    @Size(min = 3, message = "The class needs more than 2 characters")
+    @Size(min = 2, message = "The class needs more than 1 character")
     private String characterClass;
 
     // Constructors
