@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: normal;
-  background-image: url('fieldswallpaper.jpg');
+  background-image: url('../images/fieldswallpaper.jpg');
   font-family: alagard;
 }
 
@@ -399,7 +399,9 @@ body {
   z-index: 2;
 }
 
-.enemy-icon {
+.enemy-skeleton-icon,
+.enemy-rat-icon,
+.enemy-slime-icon{
   position: absolute;
   top: 50px;
   left: 50px;

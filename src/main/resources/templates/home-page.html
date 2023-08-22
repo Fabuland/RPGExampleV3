@@ -6,20 +6,20 @@
   <meta name="viewport" content="initial-scale=1, width=device-width" />
   <title>RPG</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="icon" type="image/x-icon" href="../css/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 
 <body>
 <div class="card">
   <div class="profile-pic-card">
-    <img class="ch-border" src="../css/chcard.png" />
-    <img class="user-icon" src="../css/mage.png" />
+    <img class="ch-border" src="../images/chcard.png" />
+    <img class="user-icon" src="../images/mage.png" />
   </div>
   <div class="name-lvl-class-card">
 
   </div>
   <div class="chInfo" th:if="${charactermodel}">
-    <img class="wooden-border" src="../css/woodenborder.png" />
+    <img class="wooden-border" src="../images/woodenborder.png" />
     <p class="name-text" th:text="${charactermodel.name}"></p>
     <p class="level-text" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
     <p class="chclass-text" th:text="${charactermodel.characterClass}"></p>
@@ -36,7 +36,7 @@
     <p class="totalexp-text-help">Total Exp</p>
   </div>
   <div class="stats-card">
-    <img class="stats-border" src="../css/statsborder.png" />
+    <img class="stats-border" src="../images/statsborder.png" />
     <p class="stats-text">Stats</p>
     <div class="statsHelpingText">
       <p class="health-text-help">HP</p>
@@ -50,22 +50,23 @@
     </div>
   </div>
   <div class="equipment-card">
-    <img class="equipment-border" src="../css/statsborder.png" />
+    <img class="equipment-border" src="../images/statsborder.png" />
     <p class="equipment-text">Equipment</p>
   </div>
   <a href="http://localhost:8080" class="home-button">
-    <img src="../css/homebutton.png" />
+    <img src="../images/homebutton.png" />
   </a>
   <a href="http://localhost:8080/combat/" class="combat-button">
-    <img src="../css/combatbutton.png" />
+    <img src="../images/combatbutton.png" />
   </a>
   <a href="http://localhost:8080/skill/" class="skill-button">
-    <img src="../css/skillbutton.png" />
+    <img src="../images/skillbutton.png" />
   </a>
   <a href="http://localhost:8080/settings/" class="settings-button">
-    <img src="../css/settingsbutton.png" />
+    <img src="../images/settingsbutton.png" />
   </a>
 </div>
+<script src="../js/script.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="initial-scale=1, width=device-width" />
   <title>RPG</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="icon" type="image/x-icon" href="../css/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 
 <body>
@@ -14,59 +14,62 @@
   <div class="global-card"></div>
   <div class="user-card">
     <div class="combat-stats">
-      <p class="user-name-combat">Fabu the mage</p>
-      <p class="user-level-combat">Lv. 10</p>
+      <p class="user-name-combat" th:if="${charactermodel}" th:text="${charactermodel.name}"></p>
+      <p class="user-level-combat" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
       <div class="hp-div">
-        <img class="hp-bar" src="../css/userhpbar.png" />
-        <p class="user-health-combat">43/50</p>
+        <img class="hp-bar" src="../images/userhpbar.png" />
+        <p class="user-health-combat" th:if="${statsmodel}" th:text="${statsmodel.currentHealth + '/' + statsmodel.health}"></p>
       </div>
     </div>
-    <img class="patch-border" src="../css/userpatch.png" />
-    <img class="user-icon" src="../css/mage.png" />
+    <img class="patch-border" src="../images/userpatch.png" />
+    <img class="user-icon" src="../images/mage.png" />
 
   </div>
   <div class="enemy-card">
     <div class="combat-stats">
       <div class="hp-div">
-        <img class="hp-bar" src="../css/enemyhpbar.png" />
-        <p class="enemy-health-combat">24/39</p>
+        <img class="hp-bar" src="../images/enemyhpbar.png" />
+        <p class="enemy-health-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.currentHealth + '/' + enemiesmodel.health}"></p>
       </div>
-      <p class="enemy-level-combat">Lv.7</p>
-      <p class="enemy-name-combat">Wild Skeleton</p>
+      <p class="enemy-level-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.level}"></p>
+      <p class="enemy-name-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.name}"></p>
     </div>
-    <img class="patch-border" src="../css/enemypatch.png" />
-    <img class="enemy-icon" src="../css/skeleton.png" />
+    <img class="patch-border" src="../images/enemypatch.png" />
+    <img class="enemy-skeleton-icon" src="../images/skeleton.png" hidden/>
+    <img class="enemy-rat-icon" src="../images/rat.png" hidden/>
+    <img class="enemy-slime-icon" src="../images/slime.png" hidden/>
   </div>
   <div class="actions-layout">
-    <img class="actions-border" src="../css/logborder.png" />
+    <img class="actions-border" src="../images/logborder.png" />
     <div class="action-buttons">
       <a href="#" class="attack-action">
-        <img class="sword-action" src="../css/attackbutton.png" />
+        <img class="sword-action" src="../images/attackbutton.png" />
       </a>
       <a href="#" class="defend-action">
-        <img class="shield-action" src="../css/defendbutton.png" />
+        <img class="shield-action" src="../images/defendbutton.png" />
       </a>
       <a href="#" class="heal-action">
-        <img class="potion-action" src="../css/healbutton.png" />
+        <img class="potion-action" src="../images/healbutton.png" />
       </a>
     </div>
   </div>
   <div class="log-card">
-    <img class="log-border" src="../css/logborder.png" />
+    <img class="log-border" src="../images/logborder.png" />
   </div>
   <a href="http://localhost:8080" class="home-button">
-    <img src="../css/homebutton.png" />
+    <img src="../images/homebutton.png" />
   </a>
-  <a href="http://localhost/combat/" class="combat-button">
-    <img src="../css/combatbutton.png" />
+  <a href="http://localhost:8080/combat/" class="combat-button">
+    <img src="../images/combatbutton.png" />
   </a>
-  <a href="http://localhost/skill/" class="skill-button">
-    <img src="../css/skillbutton.png" />
+  <a href="http://localhost:8080/skill/" class="skill-button">
+    <img src="../images/skillbutton.png" />
   </a>
-  <a href="http://localhost/settings/" class="settings-button">
-    <img src="../css/settingsbutton.png" />
+  <a href="http://localhost:8080/settings/" class="settings-button">
+    <img src="../images/settingsbutton.png" />
   </a>
 </div>
+<script src="../js/script.js"></script>
 </body>
 
 </html>

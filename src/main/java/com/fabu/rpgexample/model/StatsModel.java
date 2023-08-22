@@ -24,7 +24,9 @@ public class StatsModel {
     @Min(value = 1, message = "The health can't be less than 1")
     private Integer health;
 
-    /*TODO Current HP*/
+    @Column(nullable = false, name = "currenthealth")
+    @NotNull(message = "The health can't be null")
+    private Integer currentHealth;
 
     @Column(nullable = false, name = "atkpower")
     @NotNull(message = "The level can't be null")
@@ -38,10 +40,11 @@ public class StatsModel {
     public StatsModel() {
     }
 
-    public StatsModel(Integer level, Integer totalExp, Integer health, Integer atkPower, Integer critChance) {
+    public StatsModel(Integer level, Integer totalExp, Integer health, Integer currentHealth, Integer atkPower, Integer critChance) {
         this.level = level;
         this.totalExp = totalExp;
         this.health = health;
+        this.currentHealth = currentHealth;
         this.atkPower = atkPower;
         this.critChance = critChance;
     }
@@ -93,6 +96,10 @@ public class StatsModel {
     public void setCritChance(Integer critChance) {
         this.critChance = critChance;
     }
+
+    public Integer getCurrentHealth() { return currentHealth; }
+
+    public void setCurrentHealth(Integer currentHealth) { this.currentHealth = currentHealth; }
 
     @Override
     public String toString() {
