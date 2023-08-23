@@ -9,9 +9,12 @@ import jakarta.validation.constraints.*;
 public class EnemiesModel {
 
     /*TODO add inserts in data.sql*/
-    /*TODO in charactercontroller, add a random for the ID to get random enemies*/
-    /*TODO add name, lvl and health to user and enemy card on HTML*/
     /*TODO create exp, health and lvlup calcs on service*/
+    /*TODO create methods on enemiesrepo to reset the enemiesmodel table and create a method in service with the @Transactional annotation (IS IT REALLY NECESSARY TO HAVE IT IN DB?)*/
+    /*TODO create one method per enemy in service to give a custom calculation of its stats with another lvl random and fixed stats per lvl (calc based on lvl)*/
+    /*TODO detect which mob spawned depending on ID and show it on LOAD*/
+    /*TODO variables of enemies dont need to be saved on DDBB (only name and ID?), after every battle a new one just appears*/
+    /*TODO */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
