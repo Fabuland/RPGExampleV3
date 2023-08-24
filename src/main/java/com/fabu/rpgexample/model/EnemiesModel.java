@@ -10,11 +10,10 @@ public class EnemiesModel {
 
     /*TODO add inserts in data.sql*/
     /*TODO create exp, health and lvlup calcs on service*/
-    /*TODO create methods on enemiesrepo to reset the enemiesmodel table and create a method in service with the @Transactional annotation (IS IT REALLY NECESSARY TO HAVE IT IN DB?)*/
     /*TODO create one method per enemy in service to give a custom calculation of its stats with another lvl random and fixed stats per lvl (calc based on lvl)*/
-    /*TODO detect which mob spawned depending on ID and show it on LOAD*/
-    /*TODO variables of enemies dont need to be saved on DDBB (only name and ID?), after every battle a new one just appears*/
-    /*TODO */
+    /*TODO Remember to update the enemy every time the combat button is clicked (enemy encounter randomizer)*/
+    /*TODO After all of that is done (enemy stat calc and updating on db), update enemy and character health based on attack power when attk button is clicked*/
+    /*FIXME enemy model blinks every time attk button is clicked (due to updating site)*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

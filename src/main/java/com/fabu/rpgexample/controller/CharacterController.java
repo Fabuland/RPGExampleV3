@@ -21,6 +21,9 @@ public class CharacterController {
     private final CharacterRepository characterRepository;
     private final StatsRepository statsRepository;
     private final EnemiesRepository enemiesRepository;
+    public int enemyRandomId;
+    public Long characterId;
+    public Model characterEnemyModel;
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, StatsRepository statsRepository, EnemiesRepository enemiesRepository, CharacterService characterService) {
@@ -40,9 +43,19 @@ public class CharacterController {
     @GetMapping(value={"/combat/{id}", "/combat/"})
     public String getCombatPage(@PathVariable(value = "id", required = false) Long id, Model model){
         characterService.loadCharacterData(model, id);
-        characterService.loadRandomEnemyData(model);
+        characterId = id;
+        enemyRandomId = characterService.loadRandomEnemyData(model);
+        characterService.statsCalcBasedOnId(enemyRandomId);
+        characterEnemyModel = model;
         System.out.println("Inside combat page method");
         return "combat-page";
     }
 
+    @GetMapping(value = "/combat/attack")
+    public String getTestCombat(Model model){
+        characterService.loadCharacterData(model, characterId);
+        characterService.loadEnemyDataWithId(model, (long) enemyRandomId);
+        System.out.println("Button works");
+        return "combat-page";
+    }
 }
