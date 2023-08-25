@@ -18,8 +18,8 @@ public interface EnemiesRepository extends CrudRepository<EnemiesModel, Long> {
 
     // Update the enemy based on every parameter given, which are all the variables of EnemiesModel
     @Modifying
-    @Query("UPDATE EnemiesModel SET atkPower = :atkPower, currentHealth = :currentHealth, expGiven = :expGiven, health = :health, level = :level, name = :name WHERE id = :id")
-    void updateEnemy(@Param("atkPower") int atkPower, @Param("currentHealth") int currentHealth, @Param("expGiven") int expGiven, @Param("health") int health, @Param("level") int level, @Param("name") String name, @Param("id") Long id);
+    @Query("UPDATE EnemiesModel SET atkPower = :atkPower, currentHealth = :currentHealth, expGiven = :expGiven, health = :health, level = :level WHERE id = :id")
+    void updateEnemy(@Param("atkPower") int atkPower, @Param("currentHealth") int currentHealth, @Param("expGiven") int expGiven, @Param("health") int health, @Param("level") int level, @Param("id") Long id);
 
     //Get a new object of EnemiesModel based on the id given, so you can get information
     @Query("SELECT e FROM EnemiesModel e WHERE e.id = :id")

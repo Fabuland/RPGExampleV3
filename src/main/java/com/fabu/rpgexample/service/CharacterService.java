@@ -14,11 +14,13 @@ import org.springframework.ui.Model;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CharacterService {
 
     private CharacterRepository characterRepository;
     private StatsRepository statsRepository;
     private EnemiesRepository enemiesRepository;
+    public Long enemyRandomId;
 
     public CharacterService(){
 
@@ -46,19 +48,21 @@ public class CharacterService {
         });
     }
 
-    public int loadRandomEnemyData(Model model) {
-        int maxEnemyId = enemiesRepository.findMaxId();
-        int enemyRandomId = (int)Math.floor(Math.random() * (maxEnemyId - 1 + 1) + 1);
+    public void loadRandomEnemyData(Model model) {
         /*TODO add the statscalc method depending on ID so that DB is updated before doing the model*/
-        Optional<EnemiesModel> enemiesOptional = enemiesRepository.findById((long) enemyRandomId);
+        Optional<EnemiesModel> enemiesOptional = enemiesRepository.findById(enemyRandomId);
         enemiesOptional.ifPresent(enemiesmodel -> {
             model.addAttribute("enemiesmodel", enemiesmodel);
         });
-        return enemyRandomId;
     }
 
-    public void loadEnemyDataWithId(Model model, Long id) {
-        Optional<EnemiesModel> enemiesOptional = enemiesRepository.findById((id));
+    public void randomEnemyIdGenerator(){
+        int maxEnemyId = enemiesRepository.findMaxId();
+        enemyRandomId = (long) Math.floor(Math.random() * (maxEnemyId - 1 + 1) + 1);
+    }
+
+    public void loadEnemyDataWithId(Model model) {
+        Optional<EnemiesModel> enemiesOptional = enemiesRepository.findById(enemyRandomId);
         enemiesOptional.ifPresent(enemiesmodel -> {
             model.addAttribute("enemiesmodel", enemiesmodel);
         });
@@ -66,32 +70,52 @@ public class CharacterService {
 
     public int randomLevelGenerator(){
         //(int)Math.floor(Math.random() * (max - min + 1) + min);
-        int maxCurrentLevel = 4;
+        int maxCurrentLevel = 10;
         return (int)Math.floor(Math.random() * (maxCurrentLevel - 1 + 1) + 1);
     }
 
-    public void ratStatsCalc(int id, int level){
-
-        System.out.println("Slime random level is " + level);
+    public void ratStatsCalc(Long id, int level){
+        EnemiesModel ratModel = new EnemiesModel();
+        ratModel.setHealth(10);
+        ratModel.setCurrentHealth(5);
+        ratModel.setAtkPower(7);
+        ratModel.setExpGiven(calculateRatExpGiven(level));
+        enemiesRepository.updateEnemy(ratModel.getAtkPower(), ratModel.getCurrentHealth(), ratModel.getExpGiven(), ratModel.getHealth(), level, id);
+        System.out.println("Rat random level is " + level);
     }
 
-    public void slimeStatsCalc(int id, int level){
-        System.out.println("Rat random level is "+ level);
+    public static int calculateRatExpGiven(int level) {
+        int[] expGiven = new int[level];
+        int value = 6; // Initial value
+        int increment = 2; // Initial increment
+
+        for (int i = 0; i < level; i++) {
+            expGiven[i] = value;
+            value += increment;
+            increment = increment + 2; // Increase the increment for the next iteration
+        }
+        return expGiven[level - 1];
     }
 
-    public void skeletonStatsCalc(int id, int level){
+    public void slimeStatsCalc(Long id, int level){
+
+        System.out.println("Slime random level is "+ level);
+    }
+
+    public void skeletonStatsCalc(Long id, int level){
+
         System.out.println("Skeleton random level is "+ level);
     }
 
-    public void statsCalcBasedOnId(int id){
-        if(id == 1){
-            ratStatsCalc(id, randomLevelGenerator());
+    public void statsCalcBasedOnId(){
+        if(enemyRandomId == 1){
+            ratStatsCalc(enemyRandomId, randomLevelGenerator());
         }
-        else if(id == 2){
-            slimeStatsCalc(id, randomLevelGenerator());
+        else if(enemyRandomId == 2){
+            slimeStatsCalc(enemyRandomId, randomLevelGenerator());
         }
-        else if(id == 3){
-            skeletonStatsCalc(id, randomLevelGenerator());
+        else if(enemyRandomId == 3){
+            skeletonStatsCalc(enemyRandomId, randomLevelGenerator());
         }
     }
 
