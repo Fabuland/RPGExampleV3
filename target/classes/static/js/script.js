@@ -14,3 +14,26 @@ document.addEventListener("DOMContentLoaded", function () {
         slime.removeAttribute("hidden");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var attackButton = document.getElementById("attackButton");
+    console.log("Inside Javascript for attack");
+
+    attackButton.addEventListener("click", function() {
+        // Make an AJAX request to "localhost:8080/combat/attack"
+
+        var currentHealthElement = document.getElementsByClassName("enemy-health-combat")[0];
+        console.log(currentHealthElement);
+        var healthText = currentHealthElement.textContent.trim();
+        console.log(healthText);
+        var currentHealthText = healthText.charAt(0);
+        console.log(currentHealthText);
+
+        if (currentHealthText == 0) {
+            console.log("Redirect to combat");
+            attackButton.href = "http://localhost:8080/combat/";
+        }else{
+            attackButton.href = "http://localhost:8080/combat/attack";
+        }
+    });
+});

@@ -8,10 +8,11 @@ import jakarta.validation.constraints.*;
 @Table(name = "enemiesmodel")
 public class EnemiesModel {
 
+    /*TODO after the character attack, the HTML should refresh to update enemy health, then a 0.5s delay and then the same for the enemy attack*/
+    /*TODO look if you can refresh HTML without updating whole page*/
     /*TODO After all of that is done (enemy stat calc and updating on db), update enemy and character health based on attack power when attk button is clicked*/
-    /*TODO damage is a range of 2 in atk power, f.e: atkpw: 1 dmg: 1, atkpwr: 2 dmg: 1-2, atkpwr: 3, dmg: 1-3, atkpwr 4: dmg: 2-4*/
-    /*TODO for character, dmg based on atk power should be higher?*/
     /*TODO for finished product make only enemies appear from a range close to character level*/
+    /*TODO grey version of character sprite when you die, 10 sec on stats page to regain health?*/
     /*FIXME enemy model blinks every time attk button is clicked (due to updating site)*/
 
     @Id

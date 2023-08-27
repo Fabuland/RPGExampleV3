@@ -374,17 +374,15 @@ body {
 }
 
 .user-health-combat {
-  font-size: 16px;
   position: absolute;
-  top: 6px;
+  top: 40px;
   left: 15px;
   width: 100%;
 }
 
 .enemy-health-combat {
-  font-size: 16px;
   position: absolute;
-  top: 6px;
+  top: 40px;
   left: -15px;
   width: 100%;
 }

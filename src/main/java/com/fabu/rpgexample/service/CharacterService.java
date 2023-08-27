@@ -1,5 +1,6 @@
 package com.fabu.rpgexample.service;
 
+import com.fabu.rpgexample.controller.CharacterController;
 import com.fabu.rpgexample.model.CharacterModel;
 import com.fabu.rpgexample.model.EnemiesModel;
 import com.fabu.rpgexample.model.StatsModel;
@@ -20,10 +21,10 @@ public class CharacterService {
     private CharacterRepository characterRepository;
     private StatsRepository statsRepository;
     private EnemiesRepository enemiesRepository;
+    private CharacterController characterController;
+    public Long characterId;
     public Long enemyRandomId;
-    public int characterDamage;
-    public int enemyDamage;
-
+    public int chLevel;
     public CharacterService(){
 
     }
@@ -40,7 +41,7 @@ public class CharacterService {
         if(id == null || id > maxId){
             id = 1L;
         }
-        characterDamage = characterDamageCalculator(statsRepository.chDamage(id));
+        characterId = id;
         Optional<CharacterModel> characterOptional = characterRepository.findById(id);
         characterOptional.ifPresent(charactermodel -> {
             model.addAttribute("charactermodel", charactermodel);
@@ -52,8 +53,6 @@ public class CharacterService {
     }
 
     public void loadRandomEnemyData(Model model) {
-        enemyDamage = enemyDamageCalculator(enemiesRepository.enmyDamage(enemyRandomId));
-        System.out.println("Enemy damage is: " + enemyDamage);
         Optional<EnemiesModel> enemiesOptional = enemiesRepository.findById(enemyRandomId);
         enemiesOptional.ifPresent(enemiesmodel -> {
             model.addAttribute("enemiesmodel", enemiesmodel);
@@ -65,10 +64,19 @@ public class CharacterService {
         enemyRandomId = (long) Math.floor(Math.random() * (maxEnemyId - 1 + 1) + 1);
     }
 
+    public void getCharacterLevel(){
+        chLevel = statsRepository.chLevel(characterId);
+    }
+
     public int randomLevelGenerator(){
         //(int)Math.floor(Math.random() * (max - min + 1) + min);
-        int maxCurrentLevel = 10;
-        return (int)Math.floor(Math.random() * (maxCurrentLevel - 1 + 1) + 1);
+        int maxCurrentLevel = chLevel + 2;
+        System.out.println(chLevel + " " + maxCurrentLevel);
+        int minCurrentLevel = chLevel - 2;
+        if(minCurrentLevel <= 1){
+            minCurrentLevel = 1;
+        }
+        return (int)Math.floor(Math.random() * (maxCurrentLevel - minCurrentLevel + 1) + minCurrentLevel);
     }
 
     public void ratStatsCalc(Long id, int level){
@@ -254,6 +262,9 @@ public class CharacterService {
     public int characterDamageCalculator(int atkPower){
         int maxDamage = atkPower * 2;
         int minDamage = maxDamage - 2;
+        if(minDamage < 1){
+            minDamage = 1;
+        }
         return (int) Math.floor(Math.random() * (maxDamage - minDamage + 1) + minDamage);
     }
 
@@ -266,7 +277,28 @@ public class CharacterService {
     }
 
     public void combatTurnCalc(){
+        int characterDamage = characterDamageCalculator(statsRepository.chDamage(characterId));
+        int enemyDamage = enemyDamageCalculator(enemiesRepository.enmyDamage(enemyRandomId));
+        int chCurrentHealth = statsRepository.chCurrentHealth(characterId);
+        int enemyCurrentHealth = enemiesRepository.enemyCurrentHealth(enemyRandomId);
+        if(enemyCurrentHealth == 0){
 
+        }
+        int newEnemyCurrentHealth = enemyCurrentHealth - characterDamage;
+        if(newEnemyCurrentHealth <= 0){
+            newEnemyCurrentHealth = 0;
+        }
+        int newChCurrentHealth = chCurrentHealth - enemyDamage;
+        if(newChCurrentHealth <= 0){
+            //DEATH
+            newChCurrentHealth = 0;
+        }
+        enemiesRepository.updateEnemyCurrentHealth(newEnemyCurrentHealth, enemyRandomId);
+        statsRepository.updateChCurrentHealth(newChCurrentHealth, characterId);
+    }
+
+    public void healCharacter(){
+        statsRepository.updateChCurrentHealth(statsRepository.chTotalHealth(characterId), characterId);
     }
 
 }

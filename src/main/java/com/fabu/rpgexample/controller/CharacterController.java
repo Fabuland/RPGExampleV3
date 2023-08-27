@@ -21,8 +21,6 @@ public class CharacterController {
     private final CharacterRepository characterRepository;
     private final StatsRepository statsRepository;
     private final EnemiesRepository enemiesRepository;
-    public Long enemyRandomId;
-    public Long characterId;
     public Model characterEnemyModel;
 
     @Autowired
@@ -36,28 +34,34 @@ public class CharacterController {
     @GetMapping(value={"/{id}", "/"})
     public String getAllCharacters(@PathVariable(value = "id", required = false) Long id, Model model) {
         characterService.loadCharacterData(model, id);
-        System.out.println("Inside home page method");
         return "index";
     }
 
-    @GetMapping(value={"/combat/{id}", "/combat/"})
+    @GetMapping(value={"/combat/{id}", "/combat/", "/combat"})
     public String getCombatPage(@PathVariable(value = "id", required = false) Long id, Model model){
         /*TODO combine all of the methods into one method inside service*/
         characterService.randomEnemyIdGenerator();
-        characterService.statsCalcBasedOnId();
         characterService.loadCharacterData(model, id);
-        characterId = id;
+        characterService.getCharacterLevel();
+        characterService.statsCalcBasedOnId();
         characterService.loadRandomEnemyData(model);
         characterEnemyModel = model;
-        System.out.println("Inside combat page method");
         return "combat-page";
     }
 
     @GetMapping(value = "/combat/attack")
-    public String getTestCombat(Model model){
-        characterService.loadCharacterData(model, characterId);
+    public String getCombatTurn(Model model){
+        characterService.combatTurnCalc();
+        characterService.loadCharacterData(model, characterService.characterId);
         characterService.loadRandomEnemyData(model);
-        System.out.println("Button works");
+        return "combat-page";
+    }
+
+    @GetMapping(value = "/combat/heal")
+    public String getHealTurn(Model model){
+        characterService.healCharacter();
+        characterService.loadCharacterData(model, characterService.characterId);
+        characterService.loadRandomEnemyData(model);
         return "combat-page";
     }
 }

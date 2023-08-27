@@ -7,8 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface EnemiesRepository extends CrudRepository<EnemiesModel, Long> {
     // You can define additional query methods here if needed
@@ -25,7 +23,14 @@ public interface EnemiesRepository extends CrudRepository<EnemiesModel, Long> {
     @Query("SELECT e FROM EnemiesModel e WHERE e.id = :id")
     EnemiesModel getEnemyById(@Param("id") Long id);
 
-    @Query("SELECT atkPower from EnemiesModel WHERE id = :id")
+    @Query("SELECT atkPower FROM EnemiesModel WHERE id = :id")
     int enmyDamage(Long id);
+
+    @Query("SELECT currentHealth FROM EnemiesModel WHERE id = :id")
+    int enemyCurrentHealth(Long id);
+
+    @Modifying
+    @Query("UPDATE EnemiesModel SET currentHealth = :currentHealth WHERE id = :id")
+    void updateEnemyCurrentHealth(@Param("currentHealth") int currentHealth, @Param("id") Long id);
 
 }
