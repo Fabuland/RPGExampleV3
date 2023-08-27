@@ -8,11 +8,10 @@ import jakarta.validation.constraints.*;
 @Table(name = "enemiesmodel")
 public class EnemiesModel {
 
-    /*TODO add inserts in data.sql*/
-    /*TODO create exp, health and lvlup calcs on service*/
-    /*TODO create one method per enemy in service to give a custom calculation of its stats with another lvl random and fixed stats per lvl (calc based on lvl)*/
-    /*TODO Remember to update the enemy every time the combat button is clicked (enemy encounter randomizer)*/
     /*TODO After all of that is done (enemy stat calc and updating on db), update enemy and character health based on attack power when attk button is clicked*/
+    /*TODO damage is a range of 2 in atk power, f.e: atkpw: 1 dmg: 1, atkpwr: 2 dmg: 1-2, atkpwr: 3, dmg: 1-3, atkpwr 4: dmg: 2-4*/
+    /*TODO for character, dmg based on atk power should be higher?*/
+    /*TODO for finished product make only enemies appear from a range close to character level*/
     /*FIXME enemy model blinks every time attk button is clicked (due to updating site)*/
 
     @Id

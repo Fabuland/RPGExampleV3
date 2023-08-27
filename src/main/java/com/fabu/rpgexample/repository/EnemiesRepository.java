@@ -25,4 +25,7 @@ public interface EnemiesRepository extends CrudRepository<EnemiesModel, Long> {
     @Query("SELECT e FROM EnemiesModel e WHERE e.id = :id")
     EnemiesModel getEnemyById(@Param("id") Long id);
 
+    @Query("SELECT atkPower from EnemiesModel WHERE id = :id")
+    int enmyDamage(Long id);
+
 }

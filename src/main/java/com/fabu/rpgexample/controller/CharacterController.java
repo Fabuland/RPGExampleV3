@@ -56,7 +56,7 @@ public class CharacterController {
     @GetMapping(value = "/combat/attack")
     public String getTestCombat(Model model){
         characterService.loadCharacterData(model, characterId);
-        characterService.loadEnemyDataWithId(model);
+        characterService.loadRandomEnemyData(model);
         System.out.println("Button works");
         return "combat-page";
     }
