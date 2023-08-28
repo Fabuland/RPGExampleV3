@@ -355,7 +355,7 @@ public class CharacterService {
         return level;
     }
     public int chCritChanceUp(int level){
-        return level*20;
+        return level*2;
     }
 
     public void chStatsCalcUp(Long id, int level){
