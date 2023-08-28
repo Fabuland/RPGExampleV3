@@ -23,9 +23,26 @@ public interface StatsRepository extends CrudRepository<StatsModel, Long> {
     @Query("SELECT currentHealth FROM StatsModel WHERE id = :id")
     int chCurrentHealth(Long id);
 
+    @Query("SELECT totalExp FROM StatsModel WHERE id = :id")
+    int chCurrentTotalExp(Long id);
+
+    @Query("SELECT critChance FROM StatsModel WHERE id = :id")
+    int chCurrentCritChance(Long id);
+
     @Modifying
     @Query("UPDATE StatsModel SET currentHealth = :currentHealth WHERE id = :id")
     void updateChCurrentHealth(@Param("currentHealth") int currentHealth, @Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE StatsModel SET level = :level WHERE id = :id")
+    void updateChLevel(@Param("level") int level, @Param("id") Long id);
+
+    @Modifying
+    @Query("UPDATE StatsModel SET totalExp = :totalExp WHERE id = :id")
+    void updateChTotalExp(@Param("totalExp") int totalExp, @Param("id") Long id);
+
+    @Modifying
+    @Query("UPDATE StatsModel SET atkPower = :atkPower, currentHealth = :currentHealth, critChance = :critChance, health = :health WHERE id = :id")
+    void updateChLevelUp(@Param("atkPower") int atkPower, @Param("currentHealth") int currentHealth, @Param("critChance") int critChance, @Param("health") int health, @Param("id") Long id);
 
 }

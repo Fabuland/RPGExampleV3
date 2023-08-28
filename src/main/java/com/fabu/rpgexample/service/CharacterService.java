@@ -50,6 +50,10 @@ public class CharacterService {
         statsOptional.ifPresent(statsmodel -> {
             model.addAttribute("statsmodel", statsmodel);
         });
+        int chCurrentHealth = statsRepository.chCurrentHealth(id);
+        if(chCurrentHealth <= 0){
+            healCharacter();
+        }
     }
 
     public void loadRandomEnemyData(Model model) {
@@ -64,8 +68,9 @@ public class CharacterService {
         enemyRandomId = (long) Math.floor(Math.random() * (maxEnemyId - 1 + 1) + 1);
     }
 
-    public void getCharacterLevel(){
+    public int getCharacterLevel(){
         chLevel = statsRepository.chLevel(characterId);
+        return chLevel;
     }
 
     public int randomLevelGenerator(){
@@ -265,7 +270,16 @@ public class CharacterService {
         if(minDamage < 1){
             minDamage = 1;
         }
-        return (int) Math.floor(Math.random() * (maxDamage - minDamage + 1) + minDamage);
+        int damageDealt = (int) Math.floor(Math.random() * (maxDamage - minDamage + 1) + minDamage);
+        int getCritChance = statsRepository.chCurrentCritChance(characterId);
+        boolean isCrit = false;
+        int critRandomizer = (int) Math.floor(Math.random() * (100 - 1 + 1) + 1);
+        System.out.println("Crit random number: " + critRandomizer);
+        if (critRandomizer <= getCritChance){
+            damageDealt = damageDealt*2;
+            System.out.println("Crit! " + damageDealt);
+        }
+        return damageDealt;
     }
 
     public int enemyDamageCalculator(int atkPower){
@@ -281,16 +295,13 @@ public class CharacterService {
         int enemyDamage = enemyDamageCalculator(enemiesRepository.enmyDamage(enemyRandomId));
         int chCurrentHealth = statsRepository.chCurrentHealth(characterId);
         int enemyCurrentHealth = enemiesRepository.enemyCurrentHealth(enemyRandomId);
-        if(enemyCurrentHealth == 0){
-
-        }
         int newEnemyCurrentHealth = enemyCurrentHealth - characterDamage;
         if(newEnemyCurrentHealth <= 0){
             newEnemyCurrentHealth = 0;
+            giveExpToCharacter();
         }
         int newChCurrentHealth = chCurrentHealth - enemyDamage;
         if(newChCurrentHealth <= 0){
-            //DEATH
             newChCurrentHealth = 0;
         }
         enemiesRepository.updateEnemyCurrentHealth(newEnemyCurrentHealth, enemyRandomId);
@@ -299,6 +310,67 @@ public class CharacterService {
 
     public void healCharacter(){
         statsRepository.updateChCurrentHealth(statsRepository.chTotalHealth(characterId), characterId);
+    }
+
+    public int calcExpNeedPerLevel(int maxLevel) {
+        int[] expNeeded = new int[maxLevel];
+
+        for (int level = 1; level <= maxLevel; level++) {
+            // Replace this formula with your actual experience point calculation
+            int exp = 10 * level + level * (level * 14); // Just a simple example, adjust as needed
+            expNeeded[level - 1] = exp;
+        }
+
+        return expNeeded[maxLevel - 1];
+    }
+
+    public int calcTotalExpNeedPerLevel(int maxLevel) {
+        int[] expNeeded = new int[maxLevel];
+
+        int totalExp = 0;
+        for (int level = 1; level <= maxLevel; level++) {
+            // Replace this formula with your actual experience point calculation
+            int exp = 10 * level + level * (level * 14); // Just a simple example, adjust as needed
+            totalExp += exp;
+            expNeeded[level - 1] = totalExp;
+        }
+
+        return expNeeded[maxLevel - 1];
+    }
+
+    public void checkLevelUp(int level){
+        int currentTotalExp = statsRepository.chCurrentTotalExp(characterId);
+        int totalExpNeeded = calcTotalExpNeedPerLevel(level);
+        if(currentTotalExp >= totalExpNeeded){
+            chLevel = chLevel + 1;
+            statsRepository.updateChLevel(chLevel, characterId);
+            chStatsCalcUp(characterId, chLevel);
+        }
+    }
+
+    public int chHealthUp(int level){
+        return 10 + (level * 5);
+    }
+    public int chAtkPowerUp(int level){
+        return level;
+    }
+    public int chCritChanceUp(int level){
+        return level*20;
+    }
+
+    public void chStatsCalcUp(Long id, int level){
+        StatsModel chModel = new StatsModel();
+        chModel.setHealth(chHealthUp(level));
+        chModel.setCurrentHealth(chHealthUp(level));
+        chModel.setAtkPower(chAtkPowerUp(level));
+        chModel.setCritChance(chCritChanceUp(level));
+        statsRepository.updateChLevelUp(chModel.getAtkPower(), chModel.getCurrentHealth(), chModel.getCritChance(), chModel.getHealth(), id);
+    }
+
+    public void giveExpToCharacter(){
+        int enemyExpGiven = enemiesRepository.enemyExpGiven(enemyRandomId);
+        int chTotalExp = statsRepository.chCurrentTotalExp(characterId) + enemyExpGiven;
+        statsRepository.updateChTotalExp(chTotalExp, characterId);
     }
 
 }

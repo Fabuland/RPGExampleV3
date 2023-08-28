@@ -9,9 +9,9 @@ import jakarta.validation.constraints.*;
 public class EnemiesModel {
 
     /*TODO after the character attack, the HTML should refresh to update enemy health, then a 0.5s delay and then the same for the enemy attack*/
-    /*TODO look if you can refresh HTML without updating whole page*/
-    /*TODO After all of that is done (enemy stat calc and updating on db), update enemy and character health based on attack power when attk button is clicked*/
-    /*TODO for finished product make only enemies appear from a range close to character level*/
+    /*TODO brainstorm experience for next level, add expGiven to totalExp and calc to level up and get more stats*/
+    /*TODO add 2% crit for every level of the character, max crit chance cap?, add boolean if crit for the log*/
+    /*TODO create log*/
     /*TODO grey version of character sprite when you die, 10 sec on stats page to regain health?*/
     /*FIXME enemy model blinks every time attk button is clicked (due to updating site)*/
 

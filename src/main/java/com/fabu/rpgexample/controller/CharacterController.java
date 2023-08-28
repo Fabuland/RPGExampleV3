@@ -41,8 +41,8 @@ public class CharacterController {
     public String getCombatPage(@PathVariable(value = "id", required = false) Long id, Model model){
         /*TODO combine all of the methods into one method inside service*/
         characterService.randomEnemyIdGenerator();
+        characterService.checkLevelUp(characterService.getCharacterLevel());
         characterService.loadCharacterData(model, id);
-        characterService.getCharacterLevel();
         characterService.statsCalcBasedOnId();
         characterService.loadRandomEnemyData(model);
         characterEnemyModel = model;
