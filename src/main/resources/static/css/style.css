@@ -468,3 +468,26 @@ body {
   height: auto;
   z-index: 1;
 }
+
+.log-container {
+  width: 660px;
+  height: 146px;
+  margin-left: 22px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for individual log entries */
+.log-entry {
+  height: calc(100%/6);
+  width: 93%;
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+}
+
+/* Style for log entries when they are hovered over */
+.log-entry:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease-in-out;
+}

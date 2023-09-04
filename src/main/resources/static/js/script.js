@@ -1,36 +1,63 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var enemyName = document.getElementsByClassName("enemy-name-combat")[0];
-    var skeleton = document.getElementsByClassName("enemy-skeleton-icon")[0];
-    var rat = document.getElementsByClassName("enemy-rat-icon")[0];
-    var slime = document.getElementsByClassName("enemy-slime-icon")[0];
-    // Check if the text content of the <p> element is "Skeleton"
-    if (enemyName.textContent.trim() === "Skeleton") {
-        skeleton.removeAttribute("hidden");
-    }
-    if (enemyName.textContent.trim() === "Rat") {
-        rat.removeAttribute("hidden");
-    }
-    if (enemyName.textContent.trim() === "Slime") {
-        slime.removeAttribute("hidden");
-    }
+document.addEventListener("DOMContentLoaded", function() {
+  var enemyName = document.getElementsByClassName("enemy-name-combat")[0];
+  var skeleton = document.getElementsByClassName("enemy-skeleton-icon")[0];
+  var rat = document.getElementsByClassName("enemy-rat-icon")[0];
+  var slime = document.getElementsByClassName("enemy-slime-icon")[0];
+  // Check if the text content of the <p> element is "Skeleton"
+  if (enemyName.textContent.trim() === "Skeleton") {
+    skeleton.removeAttribute("hidden");
+  }
+  if (enemyName.textContent.trim() === "Rat") {
+    rat.removeAttribute("hidden");
+  }
+  if (enemyName.textContent.trim() === "Slime") {
+    slime.removeAttribute("hidden");
+  }
 
-    var attackButton = document.getElementById("attackButton");
-    console.log("Inside Javascript for attack");
-    attackButton.addEventListener("click", function() {
-        // Make an AJAX request to "localhost:8080/combat/attack"
-        var currentEnemyHealthElement = document.getElementsByClassName("enemy-health-combat")[0];
-        var enemyHealthText = currentEnemyHealthElement.textContent.trim();
-        var currentEnemyHealthText = enemyHealthText.charAt(0);
-        if (currentEnemyHealthText == 0) {
-            attackButton.href = "http://localhost:8080/combat/";
-        }else{
-            attackButton.href = "http://localhost:8080/combat/attack";
-        }
-        var currentUserHealthElement = document.getElementsByClassName("user-health-combat")[0];
-        var userHealthText = currentUserHealthElement.textContent.trim();
-        var currentUserHealthText = userHealthText.charAt(0);
-        if (currentUserHealthText == 0) {
-            attackButton.href = "http://localhost:8080";
-        }
-    });
+  var attackButton = document.getElementById("attackButton");
+  console.log("Inside Javascript for attack");
+  attackButton.addEventListener("click", function() {
+    // Make an AJAX request to "localhost:8080/combat/attack"
+    var currentEnemyHealthElement = document.getElementsByClassName("enemy-health-combat")[0];
+    var enemyHealthText = currentEnemyHealthElement.textContent.trim();
+    var currentEnemyHealthText = enemyHealthText.charAt(0);
+    if (currentEnemyHealthText == 0) {
+      attackButton.href = "http://localhost:8080/combat/";
+    } else {
+      attackButton.href = "http://localhost:8080/combat/attack";
+    }
+    var currentUserHealthElement = document.getElementsByClassName("user-health-combat")[0];
+    var userHealthText = currentUserHealthElement.textContent.trim();
+    var currentUserHealthText = userHealthText.charAt(0);
+    if (currentUserHealthText == 0) {
+      attackButton.href = "http://localhost:8080";
+    }
+  });
+
+  // JavaScript function to add a log entry
+  function addLogEntry(message) {
+    // Get the log container element
+    const logContainer = document.getElementById('logContainer');
+    // Create a new log entry element
+    const logEntry = document.createElement('div');
+    logEntry.classList.add('log-entry');
+    logEntry.textContent = message;
+
+    // Add the log entry to the top of the log container
+    logContainer.prepend(logEntry);
+
+    // Scroll to the top of the log container to show the latest entry
+    logContainer.scrollTop = 0;
+
+    const logEntries = Array.from(logContainer.querySelectorAll('.log-entry'));
+    // Check if there are more than six entries
+    if (logContainer.childElementCount > 6) {
+      // Remove the oldest entry (first child)
+      logContainer.removeChild(logContainer.lastElementChild);
+    }
+  }
+
+  // Example usage:
+  addLogEntry('This is a test 1.');
+
 });
