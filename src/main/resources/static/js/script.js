@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   var attackButton = document.getElementById("attackButton");
-  console.log("Inside Javascript for attack");
   attackButton.addEventListener("click", function() {
     // Make an AJAX request to "localhost:8080/combat/attack"
     var currentEnemyHealthElement = document.getElementsByClassName("enemy-health-combat")[0];
@@ -33,31 +32,5 @@ document.addEventListener("DOMContentLoaded", function() {
       attackButton.href = "http://localhost:8080";
     }
   });
-
-  // JavaScript function to add a log entry
-  function addLogEntry(message) {
-    // Get the log container element
-    const logContainer = document.getElementById('logContainer');
-    // Create a new log entry element
-    const logEntry = document.createElement('div');
-    logEntry.classList.add('log-entry');
-    logEntry.textContent = message;
-
-    // Add the log entry to the top of the log container
-    logContainer.prepend(logEntry);
-
-    // Scroll to the top of the log container to show the latest entry
-    logContainer.scrollTop = 0;
-
-    const logEntries = Array.from(logContainer.querySelectorAll('.log-entry'));
-    // Check if there are more than six entries
-    if (logContainer.childElementCount > 6) {
-      // Remove the oldest entry (first child)
-      logContainer.removeChild(logContainer.lastElementChild);
-    }
-  }
-
-  // Example usage:
-  addLogEntry('This is a test 1.');
 
 });

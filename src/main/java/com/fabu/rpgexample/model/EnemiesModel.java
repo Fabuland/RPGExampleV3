@@ -8,12 +8,10 @@ import jakarta.validation.constraints.*;
 @Table(name = "enemiesmodel")
 public class EnemiesModel {
 
-    /*TODO after the character attack, the HTML should refresh to update enemy health, then a 0.5s delay and then the same for the enemy attack*/
-    /*TODO brainstorm experience for next level, add expGiven to totalExp and calc to level up and get more stats*/
-    /*TODO add 2% crit for every level of the character, max crit chance cap?, add boolean if crit for the log*/
-    /*TODO create log*/
+    /*TODO create log (damage dealt + remaining HP both (diff color), crit for user with different color, enemy defeated (type too), exp given, level up*/
+    /*TODO LOG: create model (one variable), when button click INSERT to db, limit to 6 rows and th:text{LogModel} in HTML*/
     /*TODO grey version of character sprite when you die, 10 sec on stats page to regain health?*/
-    /*FIXME enemy model blinks every time attk button is clicked (due to updating site)*/
+    /*TODO add items and currency (money) model*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,4 +13,7 @@ public interface CharacterRepository extends CrudRepository<CharacterModel, Long
     List<CharacterModel> findByName(String name);
     @Query ("SELECT MAX(id) FROM CharacterModel")
     Long findMaxId();
+
+    @Query ("SELECT name FROM CharacterModel WHERE id = :id")
+    String chName(Long id);
 }

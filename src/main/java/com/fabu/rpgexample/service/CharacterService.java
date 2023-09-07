@@ -3,6 +3,7 @@ package com.fabu.rpgexample.service;
 import com.fabu.rpgexample.controller.CharacterController;
 import com.fabu.rpgexample.model.CharacterModel;
 import com.fabu.rpgexample.model.EnemiesModel;
+import com.fabu.rpgexample.model.LogModel;
 import com.fabu.rpgexample.model.StatsModel;
 import com.fabu.rpgexample.repository.CharacterRepository;
 import com.fabu.rpgexample.repository.EnemiesRepository;
@@ -22,6 +23,8 @@ public class CharacterService {
     private StatsRepository statsRepository;
     private EnemiesRepository enemiesRepository;
     private CharacterController characterController;
+    public Model characterEnemyModel;
+    public static LogModel logEntries = new LogModel();
     public Long characterId;
     public Long enemyRandomId;
     public int chLevel;
@@ -50,6 +53,7 @@ public class CharacterService {
         statsOptional.ifPresent(statsmodel -> {
             model.addAttribute("statsmodel", statsmodel);
         });
+        model.addAttribute("logModel", logEntries);
         int chCurrentHealth = statsRepository.chCurrentHealth(id);
         if(chCurrentHealth <= 0){
             healCharacter();
@@ -61,6 +65,28 @@ public class CharacterService {
         enemiesOptional.ifPresent(enemiesmodel -> {
             model.addAttribute("enemiesmodel", enemiesmodel);
         });
+    }
+
+    public void getCombatPageStart(Long id, Model model){
+        randomEnemyIdGenerator();
+        checkLevelUp(getCharacterLevel());
+        loadCharacterData(model, id);
+        statsCalcBasedOnId();
+        loadRandomEnemyData(model);
+        characterEnemyModel = model;
+    }
+
+    public void getCombatTurnStart(Model model){
+        combatTurnCalc();
+        loadCharacterData(model, characterId);
+        loadRandomEnemyData(model);
+
+    }
+
+    public void getHealTurnStar(Model model){
+        healCharacter();
+        loadCharacterData(model, characterId);
+        loadRandomEnemyData(model);
     }
 
     public void randomEnemyIdGenerator(){
@@ -76,7 +102,6 @@ public class CharacterService {
     public int randomLevelGenerator(){
         //(int)Math.floor(Math.random() * (max - min + 1) + min);
         int maxCurrentLevel = chLevel + 2;
-        System.out.println(chLevel + " " + maxCurrentLevel);
         int minCurrentLevel = chLevel - 2;
         if(minCurrentLevel <= 1){
             minCurrentLevel = 1;
@@ -296,9 +321,12 @@ public class CharacterService {
         int chCurrentHealth = statsRepository.chCurrentHealth(characterId);
         int enemyCurrentHealth = enemiesRepository.enemyCurrentHealth(enemyRandomId);
         int newEnemyCurrentHealth = enemyCurrentHealth - characterDamage;
+        String damageLog = characterRepository.chName(characterId) + " dealt " + characterDamage + " damage. " + enemiesRepository.enemyName(enemyRandomId) + " did " + enemyDamage + " damage.";
+        addNewLog(damageLog);
         if(newEnemyCurrentHealth <= 0){
             newEnemyCurrentHealth = 0;
             giveExpToCharacter();
+
         }
         int newChCurrentHealth = chCurrentHealth - enemyDamage;
         if(newChCurrentHealth <= 0){
@@ -345,6 +373,8 @@ public class CharacterService {
             chLevel = chLevel + 1;
             statsRepository.updateChLevel(chLevel, characterId);
             chStatsCalcUp(characterId, chLevel);
+            String levelUpLog = characterRepository.chName(characterId) + " reached lvl " + chLevel + "!";
+            addNewLog(levelUpLog);
         }
     }
 
@@ -369,8 +399,18 @@ public class CharacterService {
 
     public void giveExpToCharacter(){
         int enemyExpGiven = enemiesRepository.enemyExpGiven(enemyRandomId);
+        String enemyDefeatedLog = characterRepository.chName(characterId) + " defeated a " + enemiesRepository.enemyName(enemyRandomId) + "! You receive " + enemyExpGiven + " exp.";
+        addNewLog(enemyDefeatedLog);
         int chTotalExp = statsRepository.chCurrentTotalExp(characterId) + enemyExpGiven;
         statsRepository.updateChTotalExp(chTotalExp, characterId);
+    }
+
+    public static void addNewLog(String newLog) {
+        String[] logs = logEntries.logs;
+        for (int i = logs.length - 1; i > 0; i--) {
+            logs[i] = logs[i - 1];
+        }
+        logs[0] = newLog;
     }
 
 }
