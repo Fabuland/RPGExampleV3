@@ -38,8 +38,8 @@ public interface StatsRepository extends CrudRepository<StatsModel, Long> {
     void updateChLevel(@Param("level") int level, @Param("id") Long id);
 
     @Modifying
-    @Query("UPDATE StatsModel SET totalExp = :totalExp WHERE id = :id")
-    void updateChTotalExp(@Param("totalExp") int totalExp, @Param("id") Long id);
+    @Query("UPDATE StatsModel SET totalExp = :totalExp, currentExp = :currentExp, expNeededNextLevel = :expNeededNextLevel WHERE id = :id")
+    void updateChTotalExp(@Param("totalExp") int totalExp, @Param("currentExp") int currentExp, @Param("expNeededNextLevel") int expNeededNextLevel, @Param("id") Long id);
 
     @Modifying
     @Query("UPDATE StatsModel SET atkPower = :atkPower, currentHealth = :currentHealth, critChance = :critChance, health = :health WHERE id = :id")

@@ -56,7 +56,7 @@ public class CharacterController {
 
     @GetMapping(value = "/combat/heal")
     public String getHealTurn(Model model){
-        characterService.getHealTurnStar(model);
+        characterService.getHealTurnStart(model);
         return "combat-page";
     }
 }

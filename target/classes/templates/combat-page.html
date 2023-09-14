@@ -21,6 +21,7 @@
         <p class="user-health-combat" th:if="${statsmodel}" th:text="${statsmodel.currentHealth + '/' + statsmodel.health}"></p>
       </div>
     </div>
+    <p class="user-exp-combat" th:if="${statsmodel}" th:text="'Exp: ' + ${statsmodel.currentExp + '/' + statsmodel.expNeededNextLevel}"></p>
     <img class="patch-border" src="../images/userpatch.png" />
     <img class="user-icon" src="../images/mage.png" />
 

@@ -69,7 +69,6 @@ public class CharacterService {
 
     public void getCombatPageStart(Long id, Model model){
         randomEnemyIdGenerator();
-        checkLevelUp(getCharacterLevel());
         loadCharacterData(model, id);
         statsCalcBasedOnId();
         loadRandomEnemyData(model);
@@ -78,12 +77,12 @@ public class CharacterService {
 
     public void getCombatTurnStart(Model model){
         combatTurnCalc();
+        checkLevelUp(getCharacterLevel());
         loadCharacterData(model, characterId);
         loadRandomEnemyData(model);
-
     }
 
-    public void getHealTurnStar(Model model){
+    public void getHealTurnStart(Model model){
         healCharacter();
         loadCharacterData(model, characterId);
         loadRandomEnemyData(model);
@@ -326,7 +325,6 @@ public class CharacterService {
         if(newEnemyCurrentHealth <= 0){
             newEnemyCurrentHealth = 0;
             giveExpToCharacter();
-
         }
         int newChCurrentHealth = chCurrentHealth - enemyDamage;
         if(newChCurrentHealth <= 0){
@@ -402,7 +400,21 @@ public class CharacterService {
         String enemyDefeatedLog = characterRepository.chName(characterId) + " defeated a " + enemiesRepository.enemyName(enemyRandomId) + "! You receive " + enemyExpGiven + " exp.";
         addNewLog(enemyDefeatedLog);
         int chTotalExp = statsRepository.chCurrentTotalExp(characterId) + enemyExpGiven;
-        statsRepository.updateChTotalExp(chTotalExp, characterId);
+        int expNeededNextLevel = calcExpNeedPerLevel(chLevel);
+        int currentExp = 0;
+        int totalExpNeeded = calcTotalExpNeedPerLevel(chLevel);
+        if(chTotalExp >= totalExpNeeded){
+            expNeededNextLevel = calcExpNeedPerLevel(chLevel + 1);
+            currentExp = chTotalExp - calcTotalExpNeedPerLevel(chLevel);
+        }else{
+            if(chLevel > 1){
+                currentExp = chTotalExp - calcTotalExpNeedPerLevel(chLevel - 1);
+            }else{
+                currentExp = chTotalExp;
+            }
+        }
+
+        statsRepository.updateChTotalExp(chTotalExp, currentExp, expNeededNextLevel, characterId);
     }
 
     public static void addNewLog(String newLog) {
