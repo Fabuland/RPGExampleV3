@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8080")
 public class CharacterController {
 
     private final CharacterService characterService;

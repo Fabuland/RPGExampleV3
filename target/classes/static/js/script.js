@@ -21,15 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
     var enemyHealthText = currentEnemyHealthElement.textContent.trim();
     var currentEnemyHealthText = enemyHealthText.charAt(0);
     if (currentEnemyHealthText == 0) {
-      attackButton.href = "http://localhost:8080/combat/";
+      attackButton.href = "../combat/";
     } else {
-      attackButton.href = "http://localhost:8080/combat/attack";
+      attackButton.href = "../combat/attack";
     }
     var currentUserHealthElement = document.getElementsByClassName("user-health-combat")[0];
     var userHealthText = currentUserHealthElement.textContent.trim();
     var currentUserHealthText = userHealthText.charAt(0);
     if (currentUserHealthText == 0) {
-      attackButton.href = "http://localhost:8080";
+      attackButton.href = "..";
     }
   });
 
