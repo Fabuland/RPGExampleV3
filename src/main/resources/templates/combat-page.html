@@ -43,13 +43,13 @@
   <div class="actions-layout">
     <img class="actions-border" src="../images/logborder.png" />
     <div class="action-buttons">
-      <a href="http://localhost:8080/combat/attack" class="attack-action" id="attackButton">
+      <a href="../combat/attack" class="attack-action" id="attackButton">
         <img class="sword-action" src="../images/attackbutton.png" />
       </a>
       <a href="#" class="defend-action">
         <img class="shield-action" src="../images/defendbutton.png" />
       </a>
-      <a href="http://localhost:8080/combat/heal" class="heal-action">
+      <a href="../combat/heal" class="heal-action">
         <img class="potion-action" src="../images/healbutton.png" />
       </a>
     </div>
@@ -65,10 +65,10 @@
       <div class="log-entry" th:text="${logModel.logs[0]}"></div>
     </div>
   </div>
-  <a href="http://localhost:8080" class="home-button">
+  <a href=".." class="home-button">
     <img src="../images/homebutton.png" />
   </a>
-  <a href="http://localhost:8080/combat/" class="combat-button">
+  <a href="../combat/" class="combat-button">
     <img src="../images/combatbutton.png" />
   </a>
   <a href="#" class="skill-button">
