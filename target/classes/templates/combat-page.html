@@ -15,7 +15,7 @@
   <div class="user-card">
     <div class="combat-stats">
       <p class="user-name-combat" th:if="${charactermodel}" th:text="${charactermodel.name}"></p>
-      <p class="user-level-combat" th:if="${statsmodel}" th:text="${statsmodel.level}"></p>
+      <p class="user-level-combat" th:if="${statsmodel}" th:text="'Lv. ' + ${statsmodel.level}"></p>
       <div class="hp-div">
         <img class="hp-bar" src="../images/userhpbar.png" />
         <p class="user-health-combat" th:if="${statsmodel}" th:text="${statsmodel.currentHealth + '/' + statsmodel.health}"></p>
@@ -32,7 +32,7 @@
         <img class="hp-bar" src="../images/enemyhpbar.png" />
         <p class="enemy-health-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.currentHealth + '/' + enemiesmodel.health}"></p>
       </div>
-      <p class="enemy-level-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.level}"></p>
+      <p class="enemy-level-combat" th:if="${enemiesmodel}" th:text="'Lv. ' + ${enemiesmodel.level}"></p>
       <p class="enemy-name-combat" th:if="${enemiesmodel}" th:text="${enemiesmodel.name}"></p>
     </div>
     <img class="patch-border" src="../images/enemypatch.png" />
